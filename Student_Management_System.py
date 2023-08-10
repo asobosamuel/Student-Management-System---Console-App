@@ -65,6 +65,7 @@ def update_student():
     print("What info do you want to update?")
     print("1. Name")
     print("2. Age")
+    print("3. Name & Age")
     while True:
         option = int(input("Enter your choice: "))
         if option == 1:
@@ -76,6 +77,13 @@ def update_student():
             age = input("Enter new age: ")
             students[selected_student]["age"] = age
             print("...Age updated successfully...")
+            break
+        elif option == 3:
+            name = input("Enter new name: ")
+            students[selected_student]["name"] = name
+            age = input("Enter new age: ")
+            students[selected_student]["age"] = age
+            print("...Name & Age updated successfully...")
             break
         else:
             print("Enter either 1 or 2!!!")
