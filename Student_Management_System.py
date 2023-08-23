@@ -42,11 +42,24 @@ def display_subjects():
 
 def add_student():
     name = input("Enter name of Student: ")
-    age = int(input("Enter the age of student: "))
+    while True:
+        try:
+            age = int(input("Enter the age of student: "))
+        except ValueError:
+            print('Enter a number!!!')
+        else:
+            break
     display_subjects()
     subjects = []
     for subject in list_of_subjects:
-        subject_score = int(input(f"Enter {name}'s score for {subject} /100: "))
+        while True:
+            try:
+                subject_score = int(input(f"Enter {name}'s score for {subject} /100: "))
+            except ValueError:
+                print('Enter a number!!!')
+            else:
+                break
+
         subjects.append({"subject_title": subject, "subject_score": subject_score})
         print("------------------------------------------------------------------------")
     student_info = {"name": name,
@@ -61,13 +74,27 @@ def update_student():
     print("\tStudent ID\t|\tName")
     for student_id, student in enumerate(students):
         print(f"\t{student_id}\t\t|\t{student['name']}")
-    selected_student = int(input("Enter the student ID: "))
+    while True:
+        try:
+            selected_student = int(input("Enter the student ID: "))
+        except ValueError:
+            print('Enter a number!!!')
+        else:
+            break
+
     print("What info do you want to update?")
     print("1. Name")
     print("2. Age")
     print("3. Name & Age")
     while True:
-        option = int(input("Enter your choice: "))
+        while True:
+            try:
+                option = int(input("Enter your choice: "))
+            except ValueError:
+                print('Enter a number!!!')
+            else:
+                break
+
         if option == 1:
             name = input("Enter new name: ")
             students[selected_student]["name"] = name
@@ -97,7 +124,14 @@ def delete_student():
     print("\tStudent ID\t|\tName")
     for student_id, student in enumerate(students):
         print(f"\t{student_id}\t\t|\t{student['name']}")
-    selected_student = int(input("Enter the ID of the student you want to delete: "))
+    while True:
+        try:
+            selected_student = int(input("Enter the ID of the student you want to delete: "))
+        except ValueError:
+            print('Enter a number!!!')
+        else:
+            break
+
     del students[selected_student]
     print("...Student deleted successfully...")
     save_students_to_file()
@@ -153,7 +187,14 @@ def get_lowest_grade():
 
 def get_user_choice():
     while True:
-        choice = int(input("Enter your choice: "))
+        while True:
+            try:
+                choice = int(input("Enter your choice: "))
+            except ValueError:
+                print('Enter a number!!!')
+            else:
+                break
+
         print("\n")
         if choice in range(1, 12):
             return choice
